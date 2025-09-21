@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology: IT IS ONLY WHAT IT DOES</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #fafafa;
+            overflow-x: auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .title {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #141416;
+            margin: 0;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #787882;
+            margin: 5px 0 20px 0;
+        }
+        
+        .container {
+            display: flex;
+            gap: 30px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+        
+        .sidebar {
+            flex: 0 0 400px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section h3 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #141416;
+            margin: 0 0 8px 0;
+        }
+        
+        .section p {
+            margin: 0 0 10px 0;
+            color: #2a2a2e;
+        }
+        
+        .legend {
+            border-top: 2px solid #787882;
+            padding-top: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .legend-line {
+            width: 40px;
+            height: 2px;
+            margin-right: 10px;
+        }
+        
+        .diagram-container {
+            flex: 1;
+            position: relative;
+        }
+        
+        #network {
+            border: 1px solid #ddd;
+            background: white;
+            cursor: grab;
+        }
+        
+        #network:active {
+            cursor: grabbing;
+        }
+        
+        .node-bubble {
+            fill: #ecf1f8;
+            stroke: #0064b4;
+            stroke-width: 1.5;
+            cursor: pointer;
+        }
+        
+        .node-concept {
+            fill: white;
+            stroke: #525257;
+            stroke-width: 1;
+            cursor: pointer;
+        }
+        
+        .node-engine {
+            fill: white;
+            stroke: #0064b4;
+            stroke-width: 3;
+            cursor: pointer;
+        }
+        
+        .node:hover {
+            stroke-width: 3;
+        }
+        
+        .node-text {
+            font-size: 11px;
+            text-anchor: middle;
+            pointer-events: none;
+            font-weight: 500;
+        }
+        
+        .node-text-large {
+            font-size: 13px;
+            font-weight: bold;
+        }
+        
+        .node-text-engine {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .link-knowledge {
+            stroke: #2864dc;
+            stroke-dasharray: 5,5;
+            fill: none;
+        }
+        
+        .link-platform {
+            stroke: #7850c8;
+            stroke-dasharray: 8,4;
+            fill: none;
+        }
+        
+        .link-economy {
+            stroke: #f07800;
+            stroke-dasharray: 2,3;
+            fill: none;
+        }
+        
+        .link-speculative {
+            stroke: #14aa8c;
+            stroke-dasharray: 8,4,2,4;
+            fill: none;
+        }
+        
+        .link-resistance {
+            stroke: #dc3264;
+            stroke-dasharray: 3,6;
+            fill: none;
+        }
+        
+        .link-connection {
+            stroke: #787882;
+            stroke-opacity: 0.6;
+            fill: none;
+        }
+        
+        .axis-line {
+            stroke: #141416;
+            stroke-width: 2;
+            marker-end: url(#arrowhead);
+        }
+        
+        .axis-label {
+            font-size: 14px;
+            font-weight: bold;
+            text-anchor: middle;
+            fill: #141416;
+        }
+        
+        .grid-line {
+            stroke: #525257;
+            stroke-opacity: 0.3;
+            stroke-width: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">Methodology</h1>
+        <div class="subtitle">IT IS ONLY WHAT IT DOES</div>
+    </div>
+    
+    <div class="container">
+        <div class="sidebar">
+            <div class="section">
+                <h3>Statement</h3>
+                <p>My methodology is a <em>recursive, materially-contingent, philosophically inhumanist</em> framework that treats making as model-building through processes of translation, negotiation, and recombination. Beginning with a re-analysis of inhumanism through the lens of metabolic process—where production and waste are inseparable, and residue becomes the fertilizer for future cycles of inhuman labor.</p>
+            </div>
+            
+            <div class="section">
+                <h3>Procedural</h3>
+                <p>Seamful, multi-stage workflows oscillate between analogue/digital, discrete/continuous, material/computational. Recursive loops: re-scanned film → AI augmentation → Grasshopper matrices → CNC/laser inscription → re-layered print → documentation → re-scan. Each iteration generates material residue that feeds back into the cultural system as material for further individuation.</p>
+            </div>
+            
+            <div class="section">
+                <h3>Genealogies</h3>
+                <p>Two intertwined genealogies structure this inquiry: (1) metabolism in social thought from Moses Hess to Kojin Karatani, developing production as circulation plus remainder; (2) inhumanism from Apollinaire's modernist manifesto through Lyotard to Negarestani's navigational intelligence. Together these genealogies braid into a metabolic account of inhuman labor.</p>
+            </div>
+            
+            <div class="section">
+                <h3>Individuation & Technology</h3>
+                <p>Drawing from Ernst Kapp's organ projection through Bernard Stiegler's exosomatic ontogenesis and Gilbert Simondon's individuation to Yuk Hui's recursivity and contingency. Tool use becomes the decisive site of individuation—not in finished products but in the act of using them. Products are residues: metabolic waste returning to cultural systems.</p>
+            </div>
+            
+            <div class="section">
+                <h3>Anti-Capture</h3>
+                <p>The metabolic force of artistic residue depends on its return vector to the general intellect. When residues are enclosed by platforms, IP regimes, or markets, the cultural cycle suffers metabolic rift. "Anti-capture" design—open processes, composable toolchains, provenance credentials—keeps residues circulating as public nutrients rather than private rent.</p>
+            </div>
+            
+            <div class="legend">
+                <h3>Legend</h3>
+                <div class="legend-item">
+                    <div class="legend-line" style="background: #2864dc; background-image: repeating-linear-gradient(90deg, transparent, transparent 5px, white 5px, white 10px);"></div>
+                    <span>theoretical genealogies</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background: #7850c8; background-image: repeating-linear-gradient(90deg, transparent, transparent 8px, white 8px, white 12px);"></div>
+                    <span>technical individuation</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background: #f07800; background-image: repeating-linear-gradient(90deg, transparent, transparent 2px, white 2px, white 5px);"></div>
+                    <span>metabolic flows</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background: #14aa8c; background-image: repeating-linear-gradient(90deg, transparent, transparent 8px, white 8px, white 10px, transparent 10px, transparent 12px, white 12px, white 16px);"></div>
+                    <span>technical workflows</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background: #dc3264; background-image: repeating-linear-gradient(90deg, transparent, transparent 3px, white 3px, white 9px);"></div>
+                    <span>anti-capture resistance</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background: #787882;"></div>
+                    <span>material-semiotic connections</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="diagram-container">
+            <svg id="network" width="1200" height="900"></svg>
+            <div style="margin-top: 15px; font-size: 0.9rem; color: #525257; font-style: italic; max-width: 1200px;">
+                <p><strong>"It is only what it does"</strong> — Each node represents a site of material-semiotic negotiation where inhuman labor generates residues that fertilize the general intellect. The diagram functions as both analytical tool and generative protocol, mapping the metabolic cycles through which tools generate residues, residues generate novelty, and novelty generates further individuation. Novel forms created through this recursive process become cultural nutrients, seeding new tools, practices, and subjectivities in an ongoing metabolism of collective reasoning.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Network data structure
+        const data = {
+            nodes: [
+                // Central engine - model-building
+                { id: "engine", label: "&", type: "engine", group: "center" },
+                
+                // Major theoretical zones (bubbles)
+                { id: "inhumanism", label: "INHUMANISM\n& inhuman labor", type: "bubble", group: "top" },
+                { id: "metabolism", label: "CULTURAL\nMETABOLISM", type: "bubble", group: "left" },
+                { id: "individuation", label: "INDIVIDUATION\n& tool use", type: "bubble", group: "right" },
+                { id: "residue", label: "RESIDUE AS\nFERTILIZER", type: "bubble", group: "bottom" },
+                { id: "capture", label: "CAPTURE VS\nCOMMONS", type: "bubble", group: "top-right" },
+                { id: "seamful", label: "SEAMFUL\nWORKFLOWS", type: "bubble", group: "center-left" },
+                { id: "computational", label: "COMPUTATIONAL\nIMAGINATION", type: "bubble", group: "center-right" },
+                { id: "general_intellect", label: "GENERAL\nINTELLECT", type: "bubble", group: "bottom-center" },
+                
+                // Key thinkers
+                { id: "negarestani", label: "Reza\nNegarestani", type: "concept", group: "top-left" },
+                { id: "apollinaire", label: "Guillaume\nApollinaire", type: "concept", group: "top-center" },
+                { id: "simondon", label: "Gilbert\nSimondon", type: "concept", group: "right-top" },
+                { id: "stiegler", label: "Bernard\nStiegler", type: "concept", group: "right-center" },
+                { id: "yuk_hui", label: "Yuk Hui", type: "concept", group: "right-bottom" },
+                { id: "kapp", label: "Ernst Kapp", type: "concept", group: "right-left" },
+                { id: "guattari", label: "Félix\nGuattari", type: "concept", group: "left-top" },
+                { id: "whitehead", label: "Alfred North\nWhitehead", type: "concept", group: "left-center" },
+                { id: "parisi", label: "Luciana\nParisi", type: "concept", group: "center-top" },
+                { id: "fazi", label: "M. Beatrice\nFazi", type: "concept", group: "center-bottom" },
+                { id: "malabou", label: "Catherine\nMalabou", type: "concept", group: "left-bottom" },
+                { id: "lyotard", label: "Jean-François\nLyotard", type: "concept", group: "top-left-center" },
+                { id: "karatani", label: "Kojin\nKaratani", type: "concept", group: "left-left" },
+                
+                // Core concepts from research
+                { id: "organ_projection", label: "Organ\nProjection", type: "concept", group: "right-center" },
+                { id: "exosomatic", label: "Exosomatic\nOntogenesis", type: "concept", group: "right-top" },
+                { id: "recursivity", label: "Recursivity &\nContingency", type: "concept", group: "right-bottom" },
+                { id: "machinic", label: "Machinic\nAssemblages", type: "concept", group: "left-top" },
+                { id: "process_ontology", label: "Process\nOntology", type: "concept", group: "left-center" },
+                { id: "algorithmic_thought", label: "Algorithmic\nThought", type: "concept", group: "center-top" },
+                { id: "contingent_computation", label: "Contingent\nComputation", type: "concept", group: "center-bottom" },
+                { id: "destructive_plasticity", label: "Destructive\nPlasticity", type: "concept", group: "left-bottom" },
+                
+                // Technical processes from methodology
+                { id: "ai_augmentation", label: "AI\nAugmentation", type: "concept", group: "center-right" },
+                { id: "grasshopper", label: "Grasshopper\nMatrices", type: "concept", group: "center-right" },
+                { id: "cnc_laser", label: "CNC/Laser\nInscription", type: "concept", group: "center-right" },
+                { id: "re_scanned_film", label: "Re-scanned\nFilm", type: "concept", group: "center-left" },
+                { id: "layered_print", label: "Re-layered\nPrint", type: "concept", group: "center-left" },
+                { id: "documentation", label: "Documentation\nProtocol", type: "concept", group: "center" },
+                
+                // Anti-capture concepts
+                { id: "open_processes", label: "Open\nProcesses", type: "concept", group: "top-right" },
+                { id: "composable_tools", label: "Composable\nToolchains", type: "concept", group: "top-right" },
+                { id: "provenance", label: "Provenance &\nCredentials", type: "concept", group: "top-right" },
+                { id: "platform_enclosure", label: "Platform\nEnclosure", type: "concept", group: "top-right" },
+                { id: "ip_regimes", label: "IP\nRegimes", type: "concept", group: "top-right" },
+                { id: "metabolic_rift", label: "Metabolic\nRift", type: "concept", group: "top-right" },
+                
+                // Cultural production concepts
+                { id: "novel_forms", label: "Novel\nForms", type: "concept", group: "bottom-left" },
+                { id: "cultural_nutrients", label: "Cultural\nNutrients", type: "concept", group: "bottom-center" },
+                { id: "formal_innovation", label: "Formal\nInnovation", type: "concept", group: "bottom-left" },
+                { id: "visual_experimentation", label: "Visual\nExperimentation", type: "concept", group: "bottom-left" },
+                { id: "technical_media", label: "Technical\nMedia", type: "concept", group: "bottom-center" },
+                { id: "transformation", label: "Transformation\nvs Reproduction", type: "concept", group: "bottom-right" },
+                { id: "imitation_game", label: "Turing's\nImitation Game", type: "concept", group: "center-right" },
+                
+                // Metabolic cycle concepts
+                { id: "production_waste", label: "Production\n& Waste", type: "concept", group: "left" },
+                { id: "circulation", label: "Circulation\n+ Remainder", type: "concept", group: "left" },
+                { id: "return_vector", label: "Return\nVector", type: "concept", group: "bottom" },
+                { id: "novelty_generation", label: "Novelty\nGeneration", type: "concept", group: "center" },
+                { id: "collective_reasoning", label: "Collective\nReasoning", type: "concept", group: "bottom-center" },
+                
+                // Material-semiotic concepts
+                { id: "material_semiotic", label: "Material-Semiotic\nNetworks", type: "concept", group: "center" },
+                { id: "translation", label: "Translation &\nNegotiation", type: "concept", group: "center" },
+                { id: "recombination", label: "Recombination", type: "concept", group: "center" },
+                { id: "seamfulness", label: "Seamfulness", type: "concept", group: "center-left" },
+                { id: "toy_metamodels", label: "Toy/Meta\nModels", type: "concept", group: "center" }
+            ],
+            
+            links: [
+                // Inhumanism genealogy flows (knowledge - blue dashed)
+                { source: "apollinaire", target: "lyotard", type: "knowledge" },
+                { source: "lyotard", target: "negarestani", type: "knowledge" },
+                { source: "negarestani", target: "inhumanism", type: "knowledge" },
+                { source: "apollinaire", target: "novel_forms", type: "knowledge" },
+                { source: "apollinaire", target: "formal_innovation", type: "knowledge" },
+                { source: "apollinaire", target: "transformation", type: "knowledge" },
+                
+                // Individuation/technology genealogy (platform - purple dashed)
+                { source: "kapp", target: "organ_projection", type: "platform" },
+                { source: "stiegler", target: "exosomatic", type: "platform" },
+                { source: "simondon", target: "individuation", type: "platform" },
+                { source: "yuk_hui", target: "recursivity", type: "platform" },
+                { source: "organ_projection", target: "individuation", type: "platform" },
+                { source: "exosomatic", target: "individuation", type: "platform" },
+                { source: "recursivity", target: "individuation", type: "platform" },
+                
+                // Metabolic flows (economy - orange dotted)
+                { source: "metabolism", target: "production_waste", type: "economy" },
+                { source: "production_waste", target: "circulation", type: "economy" },
+                { source: "circulation", target: "residue", type: "economy" },
+                { source: "residue", target: "cultural_nutrients", type: "economy" },
+                { source: "cultural_nutrients", target: "general_intellect", type: "economy" },
+                { source: "general_intellect", target: "collective_reasoning", type: "economy" },
+                { source: "return_vector", target: "general_intellect", type: "economy" },
+                
+                // Technical workflow (speculative - green dash-dot)
+                { source: "re_scanned_film", target: "ai_augmentation", type: "speculative" },
+                { source: "ai_augmentation", target: "grasshopper", type: "speculative" },
+                { source: "grasshopper", target: "cnc_laser", type: "speculative" },
+                { source: "cnc_laser", target: "layered_print", type: "speculative" },
+                { source: "layered_print", target: "documentation", type: "speculative" },
+                { source: "documentation", target: "re_scanned_film", type: "speculative" },
+                { source: "seamful", target: "seamfulness", type: "speculative" },
+                
+                // Anti-capture resistance flows (resistance - red dotted)
+                { source: "platform_enclosure", target: "metabolic_rift", type: "resistance" },
+                { source: "ip_regimes", target: "metabolic_rift", type: "resistance" },
+                { source: "open_processes", target: "capture", type: "resistance" },
+                { source: "composable_tools", target: "capture", type: "resistance" },
+                { source: "provenance", target: "capture", type: "resistance" },
+                { source: "metabolic_rift", target: "capture", type: "resistance" },
+                
+                // Central engine connections (basic gray)
+                { source: "engine", target: "material_semiotic", type: "connection" },
+                { source: "engine", target: "translation", type: "connection" },
+                { source: "engine", target: "recombination", type: "connection" },
+                { source: "engine", target: "novelty_generation", type: "connection" },
+                { source: "engine", target: "toy_metamodels", type: "connection" },
+                { source: "engine", target: "seamfulness", type: "connection" },
+                { source: "novelty_generation", target: "engine", type: "connection" },
+                
+                // Theoretical frameworks to bubbles
+                { source: "guattari", target: "machinic", type: "knowledge" },
+                { source: "whitehead", target: "process_ontology", type: "knowledge" },
+                { source: "parisi", target: "algorithmic_thought", type: "knowledge" },
+                { source: "fazi", target: "contingent_computation", type: "knowledge" },
+                { source: "malabou", target: "destructive_plasticity", type: "knowledge" },
+                { source: "karatani", target: "circulation", type: "knowledge" },
+                
+                // Computational imagination flows
+                { source: "computational", target: "ai_augmentation", type: "platform" },
+                { source: "computational", target: "imitation_game", type: "platform" },
+                { source: "algorithmic_thought", target: "computational", type: "platform" },
+                { source: "contingent_computation", target: "computational", type: "platform" },
+                
+                // Cultural production flows
+                { source: "formal_innovation", target: "visual_experimentation", type: "speculative" },
+                { source: "visual_experimentation", target: "technical_media", type: "speculative" },
+                { source: "technical_media", target: "novel_forms", type: "speculative" },
+                { source: "novel_forms", target: "residue", type: "speculative" },
+                
+                // Metabolic return flows
+                { source: "residue", target: "return_vector", type: "economy" },
+                { source: "cultural_nutrients", target: "individuation", type: "economy" },
+                { source: "general_intellect", target: "metabolism", type: "economy" },
+                
+                // Cross-connections between major zones
+                { source: "inhumanism", target: "metabolism", type: "knowledge" },
+                { source: "individuation", target: "computational", type: "platform" },
+                { source: "seamful", target: "residue", type: "speculative" },
+                { source: "capture", target: "general_intellect", type: "resistance" },
+                
+                // Material-technical flows
+                { source: "seamful", target: "ai_augmentation", type: "connection" },
+                { source: "grasshopper", target: "material_semiotic", type: "connection" },
+                { source: "cnc_laser", target: "translation", type: "connection" },
+                { source: "documentation", target: "return_vector", type: "connection" },
+                
+                // Philosophical-practical connections
+                { source: "machinic", target: "seamful", type: "knowledge" },
+                { source: "process_ontology", target: "metabolism", type: "knowledge" },
+                { source: "destructive_plasticity", target: "transformation", type: "knowledge" },
+                { source: "recursivity", target: "novelty_generation", type: "platform" }
+            ]
+        };
+
+        // Set up SVG
+        const svg = d3.select("#network");
+        const width = +svg.attr("width");
+        const height = +svg.attr("height");
+
+        // Create arrow markers
+        svg.append("defs").append("marker")
+            .attr("id", "arrowhead")
+            .attr("viewBox", "0 -5 10 10")
+            .attr("refX", 8)
+            .attr("refY", 0)
+            .attr("markerWidth", 6)
+            .attr("markerHeight", 6)
+            .attr("orient", "auto")
+            .append("path")
+            .attr("d", "M0,-5L10,0L0,5")
+            .attr("fill", "#141416");
+
+        // Add grid lines
+        const grid = svg.append("g").attr("class", "grid");
+        
+        for (let x = 0; x <= width; x += 100) {
+            grid.append("line")
+                .attr("class", "grid-line")
+                .attr("x1", x).attr("y1", 0)
+                .attr("x2", x).attr("y2", height);
+        }
+        
+        for (let y = 0; y <= height; y += 100) {
+            grid.append("line")
+                .attr("class", "grid-line")
+                .attr("x1", 0).attr("y1", y)
+                .attr("x2", width).attr("y2", y);
+        }
+
+        // Add axes
+        svg.append("line")
+            .attr("class", "axis-line")
+            .attr("x1", 50).attr("y1", height/2)
+            .attr("x2", width-50).attr("y2", height/2);
+            
+        svg.append("line")
+            .attr("class", "axis-line")
+            .attr("x1", width/2).attr("y1", height-50)
+            .attr("x2", width/2).attr("y2", 50);
+
+        svg.append("text")
+            .attr("class", "axis-label")
+            .attr("x", width-30)
+            .attr("y", height/2 - 10)
+            .text("MATERIAL ←→ COMPUTATIONAL");
+            
+        svg.append("text")
+            .attr("class", "axis-label")
+            .attr("x", width/2)
+            .attr("y", 30)
+            .text("CAPTURE ←→ COMMONS");
+
+        // Create force simulation
+        const simulation = d3.forceSimulation(data.nodes)
+            .force("link", d3.forceLink(data.links).id(d => d.id).distance(120))
+            .force("charge", d3.forceManyBody().strength(-800))
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("collision", d3.forceCollide().radius(40));
+
+        // Add links
+        const link = svg.append("g")
+            .selectAll("path")
+            .data(data.links)
+            .enter().append("path")
+            .attr("class", d => `link-${d.type}`)
+            .attr("stroke-width", 2);
+
+        // Add nodes
+        const node = svg.append("g")
+            .selectAll("g")
+            .data(data.nodes)
+            .enter().append("g")
+            .attr("class", "node")
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
+
+        // Add circles for nodes
+        node.append("circle")
+            .attr("r", d => {
+                if (d.type === "engine") return 25;
+                if (d.type === "bubble") return 35;
+                return 20;
+            })
+            .attr("class", d => `node-${d.type}`);
+
+        // Add text labels
+        node.append("text")
+            .attr("class", d => {
+                if (d.type === "engine") return "node-text node-text-engine";
+                if (d.type === "bubble") return "node-text node-text-large";
+                return "node-text";
+            })
+            .text(d => d.label)
+            .style("font-size", d => {
+                if (d.type === "engine") return "20px";
+                if (d.type === "bubble") return "12px";
+                return "10px";
+            })
+            .each(function(d) {
+                // Handle multi-line text
+                const text = d3.select(this);
+                const lines = d.label.split('\n');
+                text.text('');
+                
+                lines.forEach((line, i) => {
+                    text.append('tspan')
+                        .attr('x', 0)
+                        .attr('dy', i === 0 ? '0.35em' : '1.1em')
+                        .text(line);
+                });
+            });
+
+        // Add zoom behavior
+        svg.call(d3.zoom()
+            .scaleExtent([0.5, 3])
+            .on("zoom", (event) => {
+                svg.selectAll("g").attr("transform", event.transform);
+            }));
+
+        // Update positions on simulation tick
+        simulation.on("tick", () => {
+            link.attr("d", d => {
+                const dx = d.target.x - d.source.x;
+                const dy = d.target.y - d.source.y;
+                const dr = Math.sqrt(dx * dx + dy * dy) * 1.5;
+                return `M${d.source.x},${d.source.y}A${dr},${dr} 0 0,1 ${d.target.x},${d.target.y}`;
+            });
+
+            node.attr("transform", d => `translate(${d.x},${d.y})`);
+        });
+
+        // Drag functions
+        function dragstarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+
+        function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+        }
+
+        function dragended(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
+
+        // Add hover effects
+        node.on("mouseover", function(event, d) {
+            d3.select(this).select("circle").style("stroke-width", "3px");
+        })
+        .on("mouseout", function(event, d) {
+            d3.select(this).select("circle").style("stroke-width", null);
+        });
+    </script>
+</body>
+</html>
