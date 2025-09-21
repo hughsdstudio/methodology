@@ -66,6 +66,28 @@
             padding-top: 15px;
         }
         
+        .reset-button {
+            background: #0064b4;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .reset-button:hover {
+            background: #004d8c;
+        }
+        
+        .instructions {
+            font-size: 0.8rem;
+            color: #525257;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
         .legend-item {
             display: flex;
             align-items: center;
@@ -231,6 +253,14 @@
             </div>
             
             <div class="legend">
+                <h3>Controls</h3>
+                <button class="reset-button" onclick="resetAllNodes()">Reset Layout</button>
+                <div class="instructions">
+                    • Drag nodes to position them (they'll lock in place)<br>
+                    • Double-click a node to unlock it<br>
+                    • Click "Reset Layout" to unlock all nodes
+                </div>
+                
                 <h3>Legend</h3>
                 <div class="legend-item">
                     <div class="legend-line" style="background: #2864dc; background-image: repeating-linear-gradient(90deg, transparent, transparent 5px, white 5px, white 10px);"></div>
@@ -612,7 +642,7 @@
             node.attr("transform", d => `translate(${d.x},${d.y})`);
         });
 
-        // Drag functions (isolated to prevent zoom conflicts)
+        // Drag functions (nodes lock in place when dropped)
         function dragstarted(event, d) {
             event.sourceEvent.stopPropagation();
             if (!event.active) simulation.alphaTarget(0.3).restart();
@@ -629,8 +659,10 @@
         function dragended(event, d) {
             event.sourceEvent.stopPropagation();
             if (!event.active) simulation.alphaTarget(0);
-            d.fx = null;
-            d.fy = null;
+            // Keep node locked in place - don't release fx/fy
+            // Visual feedback that node is now locked (green flash)
+            d3.select(event.sourceEvent.target).style("stroke", "#14aa8c")
+                .transition().duration(500).style("stroke", null);
         }
 
         // Additional protection against zoom
@@ -639,13 +671,37 @@
                 e.preventDefault();
             }
         }, { passive: false });
+        
+        // Global function to reset all nodes
+        window.resetAllNodes = function() {
+            data.nodes.forEach(d => {
+                d.fx = null;
+                d.fy = null;
+            });
+            simulation.alphaTarget(0.3).restart();
+            
+            // Visual feedback - flash all nodes
+            node.selectAll("circle").style("stroke", "#ff6b6b")
+                .transition().duration(1000).style("stroke", null);
+        };
 
-        // Add hover effects and interactions (no zoom)
+        // Add hover effects and double-click to unlock
         node.on("mouseover", function(event, d) {
             d3.select(this).select("circle").style("stroke-width", "3px");
         })
         .on("mouseout", function(event, d) {
             d3.select(this).select("circle").style("stroke-width", null);
+        })
+        .on("dblclick", function(event, d) {
+            // Double-click to unlock a node and let it float freely again
+            event.stopPropagation();
+            d.fx = null;
+            d.fy = null;
+            simulation.alphaTarget(0.3).restart();
+            
+            // Visual feedback
+            const circle = d3.select(this).select("circle");
+            circle.style("stroke", "#ff6b6b").transition().duration(500).style("stroke", null);
         });
     </script>
 </body>
