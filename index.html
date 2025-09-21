@@ -552,13 +552,11 @@
             .attr("class", "axis-label")
             .attr("x", width-30)
             .attr("y", height/2 - 10)
-            .text("MATERIAL ←→ COMPUTATIONAL");
             
         mainGroup.append("text")
             .attr("class", "axis-label")
             .attr("x", width/2)
             .attr("y", 30)
-            .text("CAPTURE ←→ COMMONS");
 
         // Create force simulation with very tight clustering
         const simulation = d3.forceSimulation(data.nodes)
