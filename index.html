@@ -74,6 +74,7 @@
             cursor: pointer;
             font-size: 0.9rem;
             margin-bottom: 15px;
+            margin-right: 8px;
         }
         
         .reset-button:hover {
@@ -114,29 +115,25 @@
             user-select: none;
         }
         
-        /* Completely disable zoom */
+        /* Disable zoom */
         .diagram-container {
             overflow: hidden;
             touch-action: pan-x pan-y;
         }
         
-        .node-bubble {
-            fill: #ecf1f8;
-            stroke: #0064b4;
-            stroke-width: 1.5;
-            cursor: pointer;
-        }
-        
-        .node-concept {
-            fill: white;
-            stroke: #525257;
-            stroke-width: 1;
+        .node-procedural,
+        .node-conceptual,
+        .node-material,
+        .node-philosophical {
+            fill: rgba(255, 255, 255, 0.1);
+            stroke: #141416;
+            stroke-width: 2;
             cursor: pointer;
         }
         
         .node-engine {
-            fill: white;
-            stroke: #0064b4;
+            fill: rgba(255, 255, 255, 0.2);
+            stroke: #141416;
             stroke-width: 3;
             cursor: pointer;
         }
@@ -145,63 +142,67 @@
             stroke-width: 3;
         }
         
+        .node.dragging {
+            stroke: #ff6b6b;
+            stroke-width: 3;
+        }
+        
         .node-text {
-            font-size: 11px;
+            font-size: 9px;
             text-anchor: middle;
             pointer-events: none;
             font-weight: 500;
+            fill: #141416;
         }
         
         .node-text-large {
-            font-size: 13px;
+            font-size: 11px;
             font-weight: bold;
         }
         
         .node-text-engine {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: bold;
         }
         
-        .link-knowledge {
+        .link-procedural {
             stroke: #2864dc;
             stroke-dasharray: 5,5;
             fill: none;
+            stroke-width: 1.5;
         }
         
-        .link-platform {
+        .link-conceptual {
             stroke: #7850c8;
             stroke-dasharray: 8,4;
             fill: none;
+            stroke-width: 1.5;
         }
         
-        .link-economy {
+        .link-material {
             stroke: #f07800;
             stroke-dasharray: 2,3;
             fill: none;
+            stroke-width: 1.5;
         }
         
-        .link-speculative {
+        .link-philosophical {
             stroke: #14aa8c;
             stroke-dasharray: 8,4,2,4;
             fill: none;
-        }
-        
-        .link-resistance {
-            stroke: #dc3264;
-            stroke-dasharray: 3,6;
-            fill: none;
+            stroke-width: 1.5;
         }
         
         .link-connection {
             stroke: #787882;
             stroke-opacity: 0.6;
             fill: none;
+            stroke-width: 1;
         }
         
         .axis-line {
             stroke: #141416;
             stroke-width: 2;
-            marker-end: url(#arrowhead);
         }
         
         .axis-label {
@@ -213,75 +214,76 @@
         
         .grid-line {
             stroke: #525257;
-            stroke-opacity: 0.3;
+            stroke-opacity: 0.2;
             stroke-width: 1;
+        }
+        
+        .quadrant-label {
+            font-size: 13px;
+            font-weight: bold;
+            text-anchor: middle;
+            fill: #525257;
+            opacity: 0.7;
         }
     </style>
 </head>
 <body>
     <div class="header">
+        <h1 class="title">IT IS ONLY WHAT IT DOES</h1>
+        <div class="subtitle">Recursive Methodology & Model-Building</div>
     </div>
     
     <div class="container">
         <div class="sidebar">
             <div class="section">
-                <h3>Statement</h3>
-                <p>My methodology is a <em>recursive, materially-contingent, philosophically inhumanist</em> framework that treats making as model-building through processes of translation, negotiation, and recombination. Beginning with a re-analysis of inhumanism through the lens of metabolic process—where production and waste are inseparable, and residue becomes the fertilizer for future cycles of inhuman labor.</p>
+                <h3>Dynamic Methodology</h3>
+                <p>This diagram randomly samples from my methodology framework, generating different conceptual constellations with each refresh. Each node represents a key concept or process that emerges from the recursive, materially-contingent approach to making as model-building.</p>
             </div>
             
             <div class="section">
-                <h3>Procedural</h3>
-                <p>Seamful, multi-stage workflows oscillate between analogue/digital, discrete/continuous, material/computational. Recursive loops: re-scanned film → AI augmentation → Grasshopper matrices → CNC/laser inscription → re-layered print → documentation → re-scan. Each iteration generates material residue that feeds back into the cultural system as material for further individuation.</p>
+                <h3>Framework Overview</h3>
+                <p>Drawing from a recursive, materially-contingent, philosophically inhumanist framework that treats making as model-building through processes of translation, negotiation, and recombination. The emphasis shifts from predetermined outcomes to what emerges when systems, tools, and materials interact contingently.</p>
             </div>
             
             <div class="section">
-                <h3>Genealogies</h3>
-                <p>Two intertwined genealogies structure this inquiry: (1) metabolism in social thought from Moses Hess to Kojin Karatani, developing production as circulation plus remainder; (2) inhumanism from Apollinaire's modernist manifesto through Lyotard to Negarestani's navigational intelligence. Together these genealogies braid into a metabolic account of inhuman labor.</p>
-            </div>
-            
-            <div class="section">
-                <h3>Individuation & Technology</h3>
-                <p>Drawing from Ernst Kapp's organ projection through Bernard Stiegler's exosomatic ontogenesis and Gilbert Simondon's individuation to Yuk Hui's recursivity and contingency. Tool use becomes the decisive site of individuation—not in finished products but in the act of using them. Products are residues: metabolic waste returning to cultural systems.</p>
-            </div>
-            
-            <div class="section">
-                <h3>Anti-Capture</h3>
-                <p>The metabolic force of artistic residue depends on its return vector to the general intellect. When residues are enclosed by platforms, IP regimes, or markets, the cultural cycle suffers metabolic rift. "Anti-capture" design—open processes, composable toolchains, provenance credentials—keeps residues circulating as public nutrients rather than private rent.</p>
+                <h3>Four Registers</h3>
+                <p><strong>Procedural:</strong> Seamful workflows oscillating between analogue/digital, discrete/continuous, material/computational.<br>
+                <strong>Conceptual:</strong> Algorithms as open fields, seamfulness, toy/meta-modeling, contingency and plasticity.<br>
+                <strong>Material:</strong> Active participants - stocks, inks, files, substrates with their own histories and behaviors.<br>
+                <strong>Philosophical:</strong> Inhumanist and processual, emphasizing becoming over being, mediation between reason, matter, and technics.</p>
             </div>
             
             <div class="legend">
                 <h3>Controls</h3>
+                <button class="reset-button" onclick="generateNewSelection()">New Random Selection</button>
                 <button class="reset-button" onclick="resetAllNodes()">Reset Layout</button>
+                <button class="reset-button" onclick="exportText()">Export Arrangement</button>
                 <div class="instructions">
-                    • Drag nodes to position them (they'll lock in place)<br>
-                    • Double-click a node to unlock it<br>
-                    • Click "Reset Layout" to unlock all nodes
+                    • <strong>Drag nodes to position them</strong><br>
+                    • "New Random Selection" generates fresh concepts<br>
+                    • Double-click a node to unlock it
                 </div>
                 
                 <h3>Legend</h3>
                 <div class="legend-item">
                     <div class="legend-line" style="background: #2864dc; background-image: repeating-linear-gradient(90deg, transparent, transparent 5px, white 5px, white 10px);"></div>
-                    <span>theoretical genealogies</span>
+                    <span>procedural workflows</span>
                 </div>
                 <div class="legend-item">
                     <div class="legend-line" style="background: #7850c8; background-image: repeating-linear-gradient(90deg, transparent, transparent 8px, white 8px, white 12px);"></div>
-                    <span>technical individuation</span>
+                    <span>conceptual frameworks</span>
                 </div>
                 <div class="legend-item">
                     <div class="legend-line" style="background: #f07800; background-image: repeating-linear-gradient(90deg, transparent, transparent 2px, white 2px, white 5px);"></div>
-                    <span>metabolic flows</span>
+                    <span>material negotiations</span>
                 </div>
                 <div class="legend-item">
                     <div class="legend-line" style="background: #14aa8c; background-image: repeating-linear-gradient(90deg, transparent, transparent 8px, white 8px, white 10px, transparent 10px, transparent 12px, white 12px, white 16px);"></div>
-                    <span>technical workflows</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-line" style="background: #dc3264; background-image: repeating-linear-gradient(90deg, transparent, transparent 3px, white 3px, white 9px);"></div>
-                    <span>anti-capture resistance</span>
+                    <span>philosophical orientations</span>
                 </div>
                 <div class="legend-item">
                     <div class="legend-line" style="background: #787882;"></div>
-                    <span>material-semiotic connections</span>
+                    <span>model-building connections</span>
                 </div>
             </div>
         </div>
@@ -289,197 +291,349 @@
         <div class="diagram-container">
             <svg id="network" width="1200" height="900"></svg>
             <div style="margin-top: 15px; font-size: 0.9rem; color: #525257; font-style: italic; max-width: 1200px;">
-                <p><strong>"It is only what it does"</strong> — Each node represents a site of material-semiotic negotiation where inhuman labor generates residues that fertilize the general intellect. The diagram functions as both analytical tool and generative protocol, mapping the metabolic cycles through which tools generate residues, residues generate novelty, and novelty generates further individuation. Novel forms created through this recursive process become cultural nutrients, seeding new tools, practices, and subjectivities in an ongoing metabolism of collective reasoning.</p>
+                <p><strong>Model-building as methodology:</strong> Each arrangement reveals different patterns in the recursive relationships between procedural workflows, conceptual frameworks, material negotiations, and philosophical orientations. The diagram functions as both analytical tool and generative protocol, mapping how seamful processes generate novelty through translation, negotiation, and recombination across registers.</p>
             </div>
         </div>
     </div>
 
     <script>
-        // Network data structure
-        const data = {
-            nodes: [
-                // Central engine - model-building
-                { id: "engine", label: "&", type: "engine", group: "center" },
-                
-                // Major theoretical zones (bubbles)
-                { id: "inhumanism", label: "INHUMANISM\n& inhuman labor", type: "bubble", group: "top" },
-                { id: "metabolism", label: "CULTURAL\nMETABOLISM", type: "bubble", group: "left" },
-                { id: "individuation", label: "INDIVIDUATION\n& tool use", type: "bubble", group: "right" },
-                { id: "residue", label: "RESIDUE AS\nFERTILIZER", type: "bubble", group: "bottom" },
-                { id: "capture", label: "CAPTURE VS\nCOMMONS", type: "bubble", group: "top-right" },
-                { id: "seamful", label: "SEAMFUL\nWORKFLOWS", type: "bubble", group: "center-left" },
-                { id: "computational", label: "COMPUTATIONAL\nIMAGINATION", type: "bubble", group: "center-right" },
-                { id: "general_intellect", label: "GENERAL\nINTELLECT", type: "bubble", group: "bottom-center" },
-                
-                // Key thinkers
-                { id: "negarestani", label: "Reza\nNegarestani", type: "concept", group: "top-left" },
-                { id: "apollinaire", label: "Guillaume\nApollinaire", type: "concept", group: "top-center" },
-                { id: "simondon", label: "Gilbert\nSimondon", type: "concept", group: "right-top" },
-                { id: "stiegler", label: "Bernard\nStiegler", type: "concept", group: "right-center" },
-                { id: "yuk_hui", label: "Yuk Hui", type: "concept", group: "right-bottom" },
-                { id: "kapp", label: "Ernst Kapp", type: "concept", group: "right-left" },
-                { id: "guattari", label: "Félix\nGuattari", type: "concept", group: "left-top" },
-                { id: "whitehead", label: "Alfred North\nWhitehead", type: "concept", group: "left-center" },
-                { id: "parisi", label: "Luciana\nParisi", type: "concept", group: "center-top" },
-                { id: "fazi", label: "M. Beatrice\nFazi", type: "concept", group: "center-bottom" },
-                { id: "malabou", label: "Catherine\nMalabou", type: "concept", group: "left-bottom" },
-                { id: "lyotard", label: "Jean-François\nLyotard", type: "concept", group: "top-left-center" },
-                { id: "karatani", label: "Kojin\nKaratani", type: "concept", group: "left-left" },
-                
-                // Core concepts from research
-                { id: "organ_projection", label: "Organ\nProjection", type: "concept", group: "right-center" },
-                { id: "exosomatic", label: "Exosomatic\nOntogenesis", type: "concept", group: "right-top" },
-                { id: "recursivity", label: "Recursivity &\nContingency", type: "concept", group: "right-bottom" },
-                { id: "machinic", label: "Machinic\nAssemblages", type: "concept", group: "left-top" },
-                { id: "process_ontology", label: "Process\nOntology", type: "concept", group: "left-center" },
-                { id: "algorithmic_thought", label: "Algorithmic\nThought", type: "concept", group: "center-top" },
-                { id: "contingent_computation", label: "Contingent\nComputation", type: "concept", group: "center-bottom" },
-                { id: "destructive_plasticity", label: "Destructive\nPlasticity", type: "concept", group: "left-bottom" },
-                
-                // Technical processes from methodology
-                { id: "ai_augmentation", label: "AI\nAugmentation", type: "concept", group: "center-right" },
-                { id: "grasshopper", label: "Grasshopper\nMatrices", type: "concept", group: "center-right" },
-                { id: "cnc_laser", label: "CNC/Laser\nInscription", type: "concept", group: "center-right" },
-                { id: "re_scanned_film", label: "Re-scanned\nFilm", type: "concept", group: "center-left" },
-                { id: "layered_print", label: "Re-layered\nPrint", type: "concept", group: "center-left" },
-                { id: "documentation", label: "Documentation\nProtocol", type: "concept", group: "center" },
-                
-                // Anti-capture concepts
-                { id: "open_processes", label: "Open\nProcesses", type: "concept", group: "top-right" },
-                { id: "composable_tools", label: "Composable\nToolchains", type: "concept", group: "top-right" },
-                { id: "provenance", label: "Provenance &\nCredentials", type: "concept", group: "top-right" },
-                { id: "platform_enclosure", label: "Platform\nEnclosure", type: "concept", group: "top-right" },
-                { id: "ip_regimes", label: "IP\nRegimes", type: "concept", group: "top-right" },
-                { id: "metabolic_rift", label: "Metabolic\nRift", type: "concept", group: "top-right" },
-                
-                // Cultural production concepts
-                { id: "novel_forms", label: "Novel\nForms", type: "concept", group: "bottom-left" },
-                { id: "cultural_nutrients", label: "Cultural\nNutrients", type: "concept", group: "bottom-center" },
-                { id: "formal_innovation", label: "Formal\nInnovation", type: "concept", group: "bottom-left" },
-                { id: "visual_experimentation", label: "Visual\nExperimentation", type: "concept", group: "bottom-left" },
-                { id: "technical_media", label: "Technical\nMedia", type: "concept", group: "bottom-center" },
-                { id: "transformation", label: "Transformation\nvs Reproduction", type: "concept", group: "bottom-right" },
-                { id: "imitation_game", label: "Turing's\nImitation Game", type: "concept", group: "center-right" },
-                
-                // Metabolic cycle concepts
-                { id: "production_waste", label: "Production\n& Waste", type: "concept", group: "left" },
-                { id: "circulation", label: "Circulation\n+ Remainder", type: "concept", group: "left" },
-                { id: "return_vector", label: "Return\nVector", type: "concept", group: "bottom" },
-                { id: "novelty_generation", label: "Novelty\nGeneration", type: "concept", group: "center" },
-                { id: "collective_reasoning", label: "Collective\nReasoning", type: "concept", group: "bottom-center" },
-                
-                // Material-semiotic concepts
-                { id: "material_semiotic", label: "Material-Semiotic\nNetworks", type: "concept", group: "center" },
-                { id: "translation", label: "Translation &\nNegotiation", type: "concept", group: "center" },
-                { id: "recombination", label: "Recombination", type: "concept", group: "center" },
-                { id: "seamfulness", label: "Seamfulness", type: "concept", group: "center-left" },
-                { id: "toy_metamodels", label: "Toy/Meta\nModels", type: "concept", group: "center" }
-            ],
+        // Methodology text corpus extracted from the provided framework
+        const methodologyCorpus = [
+            // Core framework
+            "recursive, materially-contingent, philosophically inhumanist framework",
+            "making as model-building through processes of translation, negotiation, and recombination",
+            "emphasis on what emerges when systems, tools, and materials interact contingently",
+            "constructing models that mediate between reason, matter, and technics",
+            "art is not about representing content but about constructing mediating models",
             
-            links: [
-                // Inhumanism genealogy flows (knowledge - blue dashed)
-                { source: "apollinaire", target: "lyotard", type: "knowledge" },
-                { source: "lyotard", target: "negarestani", type: "knowledge" },
-                { source: "negarestani", target: "inhumanism", type: "knowledge" },
-                { source: "apollinaire", target: "novel_forms", type: "knowledge" },
-                { source: "apollinaire", target: "formal_innovation", type: "knowledge" },
-                { source: "apollinaire", target: "transformation", type: "knowledge" },
-                
-                // Individuation/technology genealogy (platform - purple dashed)
-                { source: "kapp", target: "organ_projection", type: "platform" },
-                { source: "stiegler", target: "exosomatic", type: "platform" },
-                { source: "simondon", target: "individuation", type: "platform" },
-                { source: "yuk_hui", target: "recursivity", type: "platform" },
-                { source: "organ_projection", target: "individuation", type: "platform" },
-                { source: "exosomatic", target: "individuation", type: "platform" },
-                { source: "recursivity", target: "individuation", type: "platform" },
-                
-                // Metabolic flows (economy - orange dotted)
-                { source: "metabolism", target: "production_waste", type: "economy" },
-                { source: "production_waste", target: "circulation", type: "economy" },
-                { source: "circulation", target: "residue", type: "economy" },
-                { source: "residue", target: "cultural_nutrients", type: "economy" },
-                { source: "cultural_nutrients", target: "general_intellect", type: "economy" },
-                { source: "general_intellect", target: "collective_reasoning", type: "economy" },
-                { source: "return_vector", target: "general_intellect", type: "economy" },
-                
-                // Technical workflow (speculative - green dash-dot)
-                { source: "re_scanned_film", target: "ai_augmentation", type: "speculative" },
-                { source: "ai_augmentation", target: "grasshopper", type: "speculative" },
-                { source: "grasshopper", target: "cnc_laser", type: "speculative" },
-                { source: "cnc_laser", target: "layered_print", type: "speculative" },
-                { source: "layered_print", target: "documentation", type: "speculative" },
-                { source: "documentation", target: "re_scanned_film", type: "speculative" },
-                { source: "seamful", target: "seamfulness", type: "speculative" },
-                
-                // Anti-capture resistance flows (resistance - red dotted)
-                { source: "platform_enclosure", target: "metabolic_rift", type: "resistance" },
-                { source: "ip_regimes", target: "metabolic_rift", type: "resistance" },
-                { source: "open_processes", target: "capture", type: "resistance" },
-                { source: "composable_tools", target: "capture", type: "resistance" },
-                { source: "provenance", target: "capture", type: "resistance" },
-                { source: "metabolic_rift", target: "capture", type: "resistance" },
-                
-                // Central engine connections (basic gray)
-                { source: "engine", target: "material_semiotic", type: "connection" },
-                { source: "engine", target: "translation", type: "connection" },
-                { source: "engine", target: "recombination", type: "connection" },
-                { source: "engine", target: "novelty_generation", type: "connection" },
-                { source: "engine", target: "toy_metamodels", type: "connection" },
-                { source: "engine", target: "seamfulness", type: "connection" },
-                { source: "novelty_generation", target: "engine", type: "connection" },
-                
-                // Theoretical frameworks to bubbles
-                { source: "guattari", target: "machinic", type: "knowledge" },
-                { source: "whitehead", target: "process_ontology", type: "knowledge" },
-                { source: "parisi", target: "algorithmic_thought", type: "knowledge" },
-                { source: "fazi", target: "contingent_computation", type: "knowledge" },
-                { source: "malabou", target: "destructive_plasticity", type: "knowledge" },
-                { source: "karatani", target: "circulation", type: "knowledge" },
-                
-                // Computational imagination flows
-                { source: "computational", target: "ai_augmentation", type: "platform" },
-                { source: "computational", target: "imitation_game", type: "platform" },
-                { source: "algorithmic_thought", target: "computational", type: "platform" },
-                { source: "contingent_computation", target: "computational", type: "platform" },
-                
-                // Cultural production flows
-                { source: "formal_innovation", target: "visual_experimentation", type: "speculative" },
-                { source: "visual_experimentation", target: "technical_media", type: "speculative" },
-                { source: "technical_media", target: "novel_forms", type: "speculative" },
-                { source: "novel_forms", target: "residue", type: "speculative" },
-                
-                // Metabolic return flows
-                { source: "residue", target: "return_vector", type: "economy" },
-                { source: "cultural_nutrients", target: "individuation", type: "economy" },
-                { source: "general_intellect", target: "metabolism", type: "economy" },
-                
-                // Cross-connections between major zones
-                { source: "inhumanism", target: "metabolism", type: "knowledge" },
-                { source: "individuation", target: "computational", type: "platform" },
-                { source: "seamful", target: "residue", type: "speculative" },
-                { source: "capture", target: "general_intellect", type: "resistance" },
-                
-                // Material-technical flows
-                { source: "seamful", target: "ai_augmentation", type: "connection" },
-                { source: "grasshopper", target: "material_semiotic", type: "connection" },
-                { source: "cnc_laser", target: "translation", type: "connection" },
-                { source: "documentation", target: "return_vector", type: "connection" },
-                
-                // Philosophical-practical connections
-                { source: "machinic", target: "seamful", type: "knowledge" },
-                { source: "process_ontology", target: "metabolism", type: "knowledge" },
-                { source: "destructive_plasticity", target: "transformation", type: "knowledge" },
-                { source: "recursivity", target: "novelty_generation", type: "platform" }
-            ]
-        };
+            // Procedural concepts
+            "recursive, multi-stage and seamful workflows",
+            "processes that move between different registers: analogue to digital, discrete to continuous, material to computational",
+            "recursive oscillation itself becomes the engine of methodology",
+            "re-scanned film → AI augmentation → Grasshopper matrices → CNC/laser inscription → re-layered print",
+            "loops of translation, re-entry, and recombination",
+            "seamful workflows oscillating between registers",
+            "documented processes for democratization and analysis",
+            "call and response between computational instruction and material response",
+            "methodology is materially dialogical",
+            "protocols transparent (marginalia as open-source gestures)",
+            "multi-stage workflows that resist linear pipelines",
+            "procedural loops that generate recursive feedback",
+            "translation between different material registers",
+            "seamfulness as procedural strategy",
+            "workflows that embrace rather than hide their seams",
+            "re-entry as generative principle",
+            "documentation as democratic protocol",
+            
+            // Conceptual frameworks
+            "making as a form of model-building",
+            "seamfulness, meta and toy modeling, contingency, and plasticity",
+            "algorithms not as fixed or axiomatic rule-sets but as open fields",
+            "new potentialities and novelty can surface",
+            "inefficiency, waste, and residue as generative rather than obstructive",
+            "toy models and metamodels as conceptual tools",
+            "contingency as productive uncertainty",
+            "plasticity as capacity for transformation",
+            "open fields where novelty can emerge",
+            "algorithms as environments rather than instructions",
+            "generative potential of inefficiency",
+            "waste and residue as creative materials",
+            "model-building as exploratory practice",
+            "contingent interactions between systems",
+            "emergence over predetermined outcomes",
+            "conceptual tools for navigating uncertainty",
+            "metamodeling as recursive reflection",
+            "toy models as experimental frameworks",
+            "plasticity of form and process",
+            "openness to unexpected outcomes",
+            
+            // Material negotiations
+            "materials are never neutral supports but active participants",
+            "specific materials, stocks, inks, files, and substrates all contribute their own histories, behaviours, and contingencies",
+            "each transformation is not just execution but a site of negotiation",
+            "material resistance and contingency are folded back into the work",
+            "stocks, inks, files, substrates as active participants",
+            "materials contribute their own histories and behaviors",
+            "transformation as site of negotiation",
+            "material resistance as creative force",
+            "contingency folded back into the work",
+            "scanning, tracing, reformatting, printing, cutting, varnishing as negotiations",
+            "materials with their own agencies",
+            "substrates as co-authors",
+            "material behaviors as creative constraints",
+            "files as material with their own properties",
+            "inks that contribute to meaning-making",
+            "stocks that carry cultural histories",
+            "material dialogue rather than material control",
+            "negotiation between human intention and material response",
+            "material contingency as source of novelty",
+            "transformation as collaborative process",
+            
+            // Philosophical orientations
+            "inhumanist and processual orientation",
+            "thinkers who emphasise becoming over being (Guattari, Negarestani, Whitehead, Parisi, Fazi, Malabou)",
+            "practice located in the seams between intent, automation and contingency",
+            "resist deterministic systems of authorship or proprietary craft",
+            "philosophically inhumanist framework",
+            "processual thinking that privileges becoming",
+            "seams between intent, automation, and contingency",
+            "resistance to deterministic authorship",
+            "anti-proprietary approach to craft",
+            "Guattari's machinic assemblages",
+            "Negarestani's navigational intelligence",
+            "Whitehead's process philosophy",
+            "Parisi's algorithmic thought",
+            "Fazi's contingent computation",
+            "Malabou's destructive plasticity",
+            "inhumanism as philosophical position",
+            "becoming as primary ontological category",
+            "automation as creative partner",
+            "contingency as productive force",
+            "open-source as philosophical gesture",
+            "transparency as political practice",
+            "marginalia as public protocol",
+            "craft as collective rather than individual",
+            "authorship as distributed process",
+            "intelligence as navigational rather than computational",
+            
+            // Cross-cutting concepts
+            "translation as fundamental operation",
+            "negotiation between different systems",
+            "recombination of elements across registers",
+            "recursive feedback loops",
+            "seamful integration of processes",
+            "model-building as experimental practice",
+            "contingent emergence of novelty",
+            "plasticity across material and conceptual domains",
+            "open fields of possibility",
+            "generative potential of waste",
+            "material-semiotic networks",
+            "technical media as creative partners",
+            "democratization through documentation",
+            "transparency as methodological principle",
+            "residue as fertilizer for future processes",
+            "circulation of knowledge and techniques",
+            "protocols that can be forked and adapted",
+            "workflows that generate their own evolution",
+            "processes that document themselves",
+            "methods that resist capture by proprietary systems",
+            
+            // Technical processes
+            "AI augmentation as translation tool",
+            "Grasshopper matrices for parametric design",
+            "CNC/laser inscription as material writing",
+            "re-layered printing as dimensional translation",
+            "re-scanning as return to digital",
+            "film as analog memory medium",
+            "computational tools as collaborators",
+            "digital fabrication as material reasoning",
+            "parametric design as open system",
+            "laser cutting as precise material intervention",
+            "printing as layered material construction",
+            "scanning as material-to-digital translation",
+            "AI as pattern recognition and generation",
+            "algorithms as open-ended tools",
+            "digital tools that embrace uncertainty",
+            "fabrication as material computation",
+            "technical media as thinking tools",
+            "computational creativity through constraint",
+            "digital-analog feedback loops",
+            "technical workflows as conceptual frameworks",
+            
+            // Meta-methodological concepts
+            "methodology as recursive practice",
+            "framework that applies to itself",
+            "model-building that models model-building",
+            "recursive reflection on process",
+            "methodology that evolves through use",
+            "framework as living system",
+            "self-documenting processes",
+            "meta-analysis of creative practice",
+            "recursive methodology that includes its own analysis",
+            "framework that generates its own evolution",
+            "model-building as both method and outcome",
+            "methodology as experimental system",
+            "recursive loops that include methodological reflection",
+            "seamful methodology that shows its construction",
+            "transparent processes that enable replication",
+            "open-source methodology for creative practice",
+            "framework that resists methodological capture",
+            "methodology as commons rather than property",
+            "recursive practice that generates new methods",
+            "model-building methodology that builds methodological models"
+        ];
 
-        // Set up SVG with anti-zoom measures
+        // Categorization function
+        function categorizeChunk(chunk) {
+            const procedural_keywords = ['workflow', 'process', 'loop', 'translation', 're-scan', 'augmentation', 'grasshopper', 'cnc', 'laser', 'print', 'scan', 'documentation', 'protocol'];
+            const conceptual_keywords = ['model', 'algorithm', 'toy', 'meta', 'seamful', 'contingency', 'plasticity', 'open', 'field', 'novelty', 'emergence', 'framework'];
+            const material_keywords = ['material', 'stock', 'ink', 'file', 'substrate', 'negotiate', 'resist', 'transform', 'scan', 'print', 'cut', 'varnish', 'dialog'];
+            const philosophical_keywords = ['inhuman', 'process', 'becoming', 'guattari', 'negarestani', 'whitehead', 'parisi', 'fazi', 'malabou', 'intent', 'automation', 'seam'];
+            
+            const lowerChunk = chunk.toLowerCase();
+            
+            let scores = {
+                procedural: procedural_keywords.reduce((sum, word) => sum + (lowerChunk.includes(word) ? 1 : 0), 0),
+                conceptual: conceptual_keywords.reduce((sum, word) => sum + (lowerChunk.includes(word) ? 1 : 0), 0),
+                material: material_keywords.reduce((sum, word) => sum + (lowerChunk.includes(word) ? 1 : 0), 0),
+                philosophical: philosophical_keywords.reduce((sum, word) => sum + (lowerChunk.includes(word) ? 1 : 0), 0)
+            };
+            
+            let maxScore = Math.max(...Object.values(scores));
+            if (maxScore === 0) {
+                const categories = ['procedural', 'conceptual', 'material', 'philosophical'];
+                return categories[Math.floor(Math.random() * categories.length)];
+            }
+            
+            let candidates = Object.keys(scores).filter(key => scores[key] === maxScore);
+            return candidates[Math.floor(Math.random() * candidates.length)];
+        }
+
+        // Generate random selection of concepts
+        function generateRandomNodes() {
+            const selectedChunks = [];
+            const numChunks = 18 + Math.floor(Math.random() * 8); // 18-25 concepts
+            const usedIndices = new Set();
+            
+            while (selectedChunks.length < numChunks && usedIndices.size < methodologyCorpus.length) {
+                const randomIndex = Math.floor(Math.random() * methodologyCorpus.length);
+                if (!usedIndices.has(randomIndex)) {
+                    usedIndices.add(randomIndex);
+                    selectedChunks.push(methodologyCorpus[randomIndex]);
+                }
+            }
+            
+            const nodes = [];
+            
+            // Always include central engine
+            nodes.push({
+                id: "engine",
+                label: "&",
+                type: "engine",
+                category: "center",
+                x: 600,
+                y: 450,
+                fx: null,
+                fy: null
+            });
+            
+            // Create nodes from selected chunks
+            selectedChunks.forEach((chunk, index) => {
+                const category = categorizeChunk(chunk);
+                const truncatedChunk = chunk.length > 120 ? chunk.substring(0, 117) + "..." : chunk;
+                
+                // Position based on category
+                let x, y;
+                const jitter = 180;
+                
+                switch(category) {
+                    case 'procedural':
+                        x = 300 + (Math.random() - 0.5) * jitter;
+                        y = 250 + (Math.random() - 0.5) * jitter;
+                        break;
+                    case 'conceptual':
+                        x = 900 + (Math.random() - 0.5) * jitter;
+                        y = 250 + (Math.random() - 0.5) * jitter;
+                        break;
+                    case 'material':
+                        x = 300 + (Math.random() - 0.5) * jitter;
+                        y = 650 + (Math.random() - 0.5) * jitter;
+                        break;
+                    case 'philosophical':
+                        x = 900 + (Math.random() - 0.5) * jitter;
+                        y = 650 + (Math.random() - 0.5) * jitter;
+                        break;
+                }
+                
+                nodes.push({
+                    id: `concept_${index}`,
+                    label: truncatedChunk,
+                    type: category,
+                    category: category,
+                    x: Math.max(50, Math.min(1150, x)),
+                    y: Math.max(50, Math.min(850, y)),
+                    fx: null,
+                    fy: null
+                });
+            });
+            
+            return nodes;
+        }
+
+        // Generate random connections
+        function generateRandomLinks(nodes) {
+            const links = [];
+            const conceptNodes = nodes.filter(n => n.type !== 'engine');
+            
+            // Connect engine to some random nodes
+            const engineConnections = Math.min(5, conceptNodes.length);
+            const shuffledNodes = [...conceptNodes].sort(() => 0.5 - Math.random());
+            
+            for (let i = 0; i < engineConnections; i++) {
+                links.push({
+                    source: "engine",
+                    target: shuffledNodes[i].id,
+                    type: "connection"
+                });
+            }
+            
+            // Create connections within categories
+            const categoryGroups = {};
+            conceptNodes.forEach(node => {
+                if (!categoryGroups[node.type]) categoryGroups[node.type] = [];
+                categoryGroups[node.type].push(node);
+            });
+            
+            Object.keys(categoryGroups).forEach(type => {
+                const nodesOfType = categoryGroups[type];
+                if (nodesOfType.length > 1) {
+                    const numConnections = Math.min(3, Math.floor(nodesOfType.length / 2));
+                    for (let i = 0; i < numConnections; i++) {
+                        const sourceIdx = Math.floor(Math.random() * nodesOfType.length);
+                        let targetIdx = Math.floor(Math.random() * nodesOfType.length);
+                        while (targetIdx === sourceIdx) {
+                            targetIdx = Math.floor(Math.random() * nodesOfType.length);
+                        }
+                        
+                        links.push({
+                            source: nodesOfType[sourceIdx].id,
+                            target: nodesOfType[targetIdx].id,
+                            type: type
+                        });
+                    }
+                }
+            });
+            
+            // Add cross-category connections
+            const numCrossConnections = Math.min(8, Math.floor(conceptNodes.length / 3));
+            for (let i = 0; i < numCrossConnections; i++) {
+                const sourceIdx = Math.floor(Math.random() * conceptNodes.length);
+                let targetIdx = Math.floor(Math.random() * conceptNodes.length);
+                while (targetIdx === sourceIdx || conceptNodes[sourceIdx].type === conceptNodes[targetIdx].type) {
+                    targetIdx = Math.floor(Math.random() * conceptNodes.length);
+                }
+                
+                links.push({
+                    source: conceptNodes[sourceIdx].id,
+                    target: conceptNodes[targetIdx].id,
+                    type: "connection"
+                });
+            }
+            
+            return links;
+        }
+
+        // Global variables
+        let currentNodes = [];
+        let currentLinks = [];
+        let nodeMap = {};
+        
+        // SVG setup
         const svg = d3.select("#network");
         const width = +svg.attr("width");
         const height = +svg.attr("height");
 
-        // Completely prevent zoom behaviors
+        // Prevent zoom behaviors
         svg.on("wheel", function(event) {
             event.preventDefault();
             event.stopPropagation();
@@ -489,217 +643,397 @@
             event.preventDefault();
             event.stopPropagation();
         });
-        
-        // Prevent touch zoom on mobile
-        svg.on("touchstart", function(event) {
-            if (event.touches && event.touches.length > 1) {
-                event.preventDefault();
-            }
-        });
-        
-        svg.on("touchmove", function(event) {
-            if (event.touches && event.touches.length > 1) {
-                event.preventDefault();
-            }
-        });
 
-        // Create arrow markers
-        svg.append("defs").append("marker")
-            .attr("id", "arrowhead")
-            .attr("viewBox", "0 -5 10 10")
-            .attr("refX", 8)
-            .attr("refY", 0)
-            .attr("markerWidth", 6)
-            .attr("markerHeight", 6)
-            .attr("orient", "auto")
-            .append("path")
-            .attr("d", "M0,-5L10,0L0,5")
-            .attr("fill", "#141416");
-
-        // Create main container group (never transformed)
+        // Create main container group
         const mainGroup = svg.append("g").attr("class", "main-container");
 
-        // Add grid lines to main group
-        const grid = mainGroup.append("g").attr("class", "grid");
-        
-        for (let x = 0; x <= width; x += 100) {
-            grid.append("line")
-                .attr("class", "grid-line")
-                .attr("x1", x).attr("y1", 0)
-                .attr("x2", x).attr("y2", height);
-        }
-        
-        for (let y = 0; y <= height; y += 100) {
-            grid.append("line")
-                .attr("class", "grid-line")
-                .attr("x1", 0).attr("y1", y)
-                .attr("x2", width).attr("y2", y);
-        }
-
-        // Add axes to main group
-        mainGroup.append("line")
-            .attr("class", "axis-line")
-            .attr("x1", 50).attr("y1", height/2)
-            .attr("x2", width-50).attr("y2", height/2);
+        // Add grid
+        function drawGrid() {
+            const grid = mainGroup.selectAll(".grid-line").data([]);
+            grid.exit().remove();
             
-        mainGroup.append("line")
-            .attr("class", "axis-line")
-            .attr("x1", width/2).attr("y1", height-50)
-            .attr("x2", width/2).attr("y2", 50);
-
-        mainGroup.append("text")
-            .attr("class", "axis-label")
-            .attr("x", width-30)
-            .attr("y", height/2 - 10)
+            const gridData = [];
+            for (let x = 0; x <= width; x += 100) {
+                gridData.push({type: 'vertical', pos: x});
+            }
+            for (let y = 0; y <= height; y += 100) {
+                gridData.push({type: 'horizontal', pos: y});
+            }
             
-        mainGroup.append("text")
-            .attr("class", "axis-label")
-            .attr("x", width/2)
-            .attr("y", 30)
+            mainGroup.selectAll(".grid-line")
+                .data(gridData)
+                .enter()
+                .append("line")
+                .attr("class", "grid-line")
+                .attr("x1", d => d.type === 'vertical' ? d.pos : 0)
+                .attr("y1", d => d.type === 'vertical' ? 0 : d.pos)
+                .attr("x2", d => d.type === 'vertical' ? d.pos : width)
+                .attr("y2", d => d.type === 'vertical' ? height : d.pos);
+        }
 
-        // Create force simulation with very tight clustering
-        const simulation = d3.forceSimulation(data.nodes)
-            .force("link", d3.forceLink(data.links).id(d => d.id).distance(45))  // Much shorter links
-            .force("charge", d3.forceManyBody().strength(-150))  // Much weaker repulsion
-            .force("center", d3.forceCenter(width / 2, height / 2))
-            .force("collision", d3.forceCollide().radius(18))  // Closer collision detection
-            .force("x", d3.forceX(width / 2).strength(0.1))  // Pull toward center X
-            .force("y", d3.forceY(height / 2).strength(0.1));  // Pull toward center Y
-
-        // Add links to main group
-        const link = mainGroup.append("g")
-            .selectAll("path")
-            .data(data.links)
-            .enter().append("path")
-            .attr("class", d => `link-${d.type}`)
-            .attr("stroke-width", 2);
-
-        // Add nodes to main group
-        const node = mainGroup.append("g")
-            .selectAll("g")
-            .data(data.nodes)
-            .enter().append("g")
-            .attr("class", "node")
-            .call(d3.drag()
-                .on("start", dragstarted)
-                .on("drag", dragged)
-                .on("end", dragended));
-
-        // Add circles for nodes
-        node.append("circle")
-            .attr("r", d => {
-                if (d.type === "engine") return 25;
-                if (d.type === "bubble") return 35;
-                return 20;
-            })
-            .attr("class", d => `node-${d.type}`);
-
-        // Add text labels
-        node.append("text")
-            .attr("class", d => {
-                if (d.type === "engine") return "node-text node-text-engine";
-                if (d.type === "bubble") return "node-text node-text-large";
-                return "node-text";
-            })
-            .text(d => d.label)
-            .style("font-size", d => {
-                if (d.type === "engine") return "20px";
-                if (d.type === "bubble") return "12px";
-                return "10px";
-            })
-            .each(function(d) {
-                // Handle multi-line text
-                const text = d3.select(this);
-                const lines = d.label.split('\n');
-                text.text('');
+        // Add axes and labels
+        function drawAxes() {
+            // Remove existing axes
+            mainGroup.selectAll(".axis-line, .axis-label, .quadrant-label").remove();
+            
+            // Axes
+            mainGroup.append("line")
+                .attr("class", "axis-line")
+                .attr("x1", 50).attr("y1", height/2)
+                .attr("x2", width-50).attr("y2", height/2);
                 
-                lines.forEach((line, i) => {
-                    text.append('tspan')
-                        .attr('x', 0)
-                        .attr('dy', i === 0 ? '0.35em' : '1.1em')
+            mainGroup.append("line")
+                .attr("class", "axis-line")
+                .attr("x1", width/2).attr("y1", height-50)
+                .attr("x2", width/2).attr("y2", 50);
+
+            // Quadrant labels
+            const labels = [
+                { text: "PROCEDURAL", x: width/4, y: 30 },
+                { text: "CONCEPTUAL", x: 3*width/4, y: 30 },
+                { text: "MATERIAL", x: width/4, y: height-20 },
+                { text: "PHILOSOPHICAL", x: 3*width/4, y: height-20 }
+            ];
+            
+            labels.forEach(label => {
+                mainGroup.append("text")
+                    .attr("class", "quadrant-label")
+                    .attr("x", label.x)
+                    .attr("y", label.y)
+                    .text(label.text);
+            });
+        }
+
+        // Text wrapping function (improved version)
+        function wrapText(text, maxCharsPerLine) {
+            const words = text.split(' ');
+            const lines = [];
+            let currentLine = '';
+            
+            for (let word of words) {
+                const testLine = currentLine ? currentLine + ' ' + word : word;
+                if (testLine.length <= maxCharsPerLine) {
+                    currentLine = testLine;
+                } else {
+                    if (currentLine) lines.push(currentLine);
+                    currentLine = word;
+                }
+            }
+            if (currentLine) lines.push(currentLine);
+            return lines;
+        }
+
+        // Calculate node dimensions based on text content
+        function calculateNodeDimensions(nodes) {
+            nodes.forEach(node => {
+                const fontSize = node.type === "engine" ? 16 : 9;
+                const maxCharsPerLine = node.type === "engine" ? 12 : 35;
+                const lines = wrapText(node.label, maxCharsPerLine);
+                
+                // Calculate actual text dimensions more accurately
+                const charWidth = fontSize * 0.6; // Approximate character width
+                const lineHeight = fontSize * 1.2;
+                
+                // Find the longest line for width calculation
+                const longestLineLength = Math.max(...lines.map(line => line.length));
+                const textWidth = longestLineLength * charWidth;
+                const textHeight = lines.length * lineHeight;
+                
+                // Add 20px padding (10px on each side)
+                node.width = textWidth + 20;
+                node.height = textHeight + 20;
+                node.lines = lines;
+                
+                // Minimum sizes to ensure readability
+                if (node.type === "engine") {
+                    node.width = Math.max(node.width, 60);
+                    node.height = Math.max(node.height, 40);
+                } else {
+                    node.width = Math.max(node.width, 80);
+                    node.height = Math.max(node.height, 35);
+                }
+            });
+        }
+
+        // Render diagram
+        function renderDiagram() {
+            // Clear existing content
+            mainGroup.selectAll(".link-group, .node-group").remove();
+            
+            drawGrid();
+            drawAxes();
+            
+            // Calculate node dimensions based on text content
+            calculateNodeDimensions(currentNodes);
+            
+            // Create node lookup
+            nodeMap = {};
+            currentNodes.forEach(node => nodeMap[node.id] = node);
+            
+            // Create link group
+            const linkGroup = mainGroup.append("g").attr("class", "link-group");
+            const links = linkGroup.selectAll("path")
+                .data(currentLinks)
+                .enter().append("path")
+                .attr("class", d => `link-${d.type}`)
+                .attr("d", d => {
+                    const source = nodeMap[d.source];
+                    const target = nodeMap[d.target];
+                    if (source && target) {
+                        const dx = target.x - source.x;
+                        const dy = target.y - source.y;
+                        const dr = Math.sqrt(dx * dx + dy * dy) * 1.2;
+                        return `M${source.x},${source.y}A${dr},${dr} 0 0,1 ${target.x},${target.y}`;
+                    }
+                    return "";
+                });
+
+            // Create node group
+            const nodeGroup = mainGroup.append("g").attr("class", "node-group");
+            const nodes = nodeGroup.selectAll("g")
+                .data(currentNodes)
+                .enter().append("g")
+                .attr("class", "node")
+                .attr("transform", d => `translate(${d.x},${d.y})`);
+
+            // Add squares with dynamic sizing
+            nodes.append("rect")
+                .attr("width", d => d.width)
+                .attr("height", d => d.height)
+                .attr("x", d => -d.width/2)
+                .attr("y", d => -d.height/2)
+                .attr("rx", 4)
+                .attr("ry", 4)
+                .attr("class", d => `node-${d.type}`);
+
+            // Add text with pre-calculated wrapping
+            nodes.each(function(d) {
+                const node = d3.select(this);
+                
+                d.lines.forEach((line, i) => {
+                    node.append("text")
+                        .attr("class", d.type === "engine" ? "node-text node-text-engine" : "node-text")
+                        .attr("y", (i - (d.lines.length-1)/2) * (d.type === "engine" ? 18 : 11))
                         .text(line);
                 });
             });
 
-        // Update positions on simulation tick (with bounds checking)
-        simulation.on("tick", () => {
-            // Keep nodes within bounds
-            data.nodes.forEach(d => {
+            // Add drag behavior
+            nodes.call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
+
+            // Add hover and double-click
+            nodes.on("mouseover", function(event, d) {
+                d3.select(this).select("rect").style("stroke-width", "3px");
+            })
+            .on("mouseout", function(event, d) {
+                d3.select(this).select("rect").style("stroke-width", null);
+            })
+            .on("dblclick", function(event, d) {
+                event.stopPropagation();
+                d.fx = null;
+                d.fy = null;
+                d3.select(this).select("rect")
+                    .style("stroke", "#ff6b6b")
+                    .transition().duration(500)
+                    .style("stroke", null);
+            });
+
+            function updatePositions() {
+                nodes.attr("transform", d => `translate(${d.x},${d.y})`);
+                links.attr("d", d => {
+                    const source = nodeMap[d.source];
+                    const target = nodeMap[d.target];
+                    if (source && target) {
+                        const dx = target.x - source.x;
+                        const dy = target.y - source.y;
+                        const dr = Math.sqrt(dx * dx + dy * dy) * 1.2;
+                        return `M${source.x},${source.y}A${dr},${dr} 0 0,1 ${target.x},${target.y}`;
+                    }
+                    return "";
+                });
+            }
+
+            function dragstarted(event, d) {
+                event.sourceEvent.stopPropagation();
+                d.fx = d.x;
+                d.fy = d.y;
+                d3.select(this).classed("dragging", true);
+            }
+
+            function dragged(event, d) {
+                event.sourceEvent.stopPropagation();
+                d.fx = Math.max(30, Math.min(width - 30, event.x));
+                d.fy = Math.max(30, Math.min(height - 30, event.y));
+                d.x = d.fx;
+                d.y = d.fy;
+                updatePositions();
+            }
+
+            function dragended(event, d) {
+                event.sourceEvent.stopPropagation();
+                d3.select(this).classed("dragging", false);
+                d3.select(this).select("rect")
+                    .style("stroke", "#14aa8c")
+                    .transition().duration(500)
+                    .style("stroke", null);
+            }
+        }
+
+        // Global functions
+        window.generateNewSelection = function() {
+            currentNodes = generateRandomNodes();
+            currentLinks = generateRandomLinks(currentNodes);
+            renderDiagram();
+        };
+
+        window.resetAllNodes = function() {
+            currentNodes.forEach(d => {
+                d.fx = null;
+                d.fy = null;
+                
+                // Reset positions based on category
+                if (d.category === "procedural") {
+                    d.x = 300 + (Math.random() - 0.5) * 160;
+                    d.y = 250 + (Math.random() - 0.5) * 160;
+                } else if (d.category === "conceptual") {
+                    d.x = 900 + (Math.random() - 0.5) * 160;
+                    d.y = 250 + (Math.random() - 0.5) * 160;
+                } else if (d.category === "material") {
+                    d.x = 300 + (Math.random() - 0.5) * 160;
+                    d.y = 650 + (Math.random() - 0.5) * 160;
+                } else if (d.category === "philosophical") {
+                    d.x = 900 + (Math.random() - 0.5) * 160;
+                    d.y = 650 + (Math.random() - 0.5) * 160;
+                } else {
+                    d.x = 600;
+                    d.y = 450;
+                }
+                
                 d.x = Math.max(30, Math.min(width - 30, d.x));
                 d.y = Math.max(30, Math.min(height - 30, d.y));
             });
             
-            link.attr("d", d => {
-                const dx = d.target.x - d.source.x;
-                const dy = d.target.y - d.source.y;
-                const dr = Math.sqrt(dx * dx + dy * dy) * 1.5;
-                return `M${d.source.x},${d.source.y}A${dr},${dr} 0 0,1 ${d.target.x},${d.target.y}`;
-            });
+            renderDiagram();
+        };
 
-            node.attr("transform", d => `translate(${d.x},${d.y})`);
+        window.exportText = function() {
+            try {
+                const contentNodes = currentNodes.filter(d => d.type !== 'engine');
+                
+                const categorizeByPosition = (node) => {
+                    const isLeft = node.x < width/2;
+                    const isTop = node.y < height/2;
+                    
+                    if (isTop && !isLeft) return 'conceptual';
+                    if (!isTop && !isLeft) return 'philosophical';
+                    if (!isTop && isLeft) return 'material';
+                    if (isTop && isLeft) return 'procedural';
+                    return 'center';
+                };
+
+                const quadrantGroups = {
+                    'procedural': [],
+                    'conceptual': [],
+                    'material': [],
+                    'philosophical': []
+                };
+
+                contentNodes.forEach(node => {
+                    const currentQuadrant = categorizeByPosition(node);
+                    if (quadrantGroups[currentQuadrant]) {
+                        quadrantGroups[currentQuadrant].push(node);
+                    }
+                });
+
+                Object.keys(quadrantGroups).forEach(quadrant => {
+                    quadrantGroups[quadrant].sort((a, b) => {
+                        if (Math.abs(a.y - b.y) < 50) {
+                            return a.x - b.x;
+                        }
+                        return a.y - b.y;
+                    });
+                });
+
+                const quadrantNames = {
+                    'procedural': 'PROCEDURAL WORKFLOWS',
+                    'conceptual': 'CONCEPTUAL FRAMEWORKS',
+                    'material': 'MATERIAL NEGOTIATIONS',
+                    'philosophical': 'PHILOSOPHICAL ORIENTATIONS'
+                };
+
+                let textContent = "IT IS ONLY WHAT IT DOES: RECURSIVE METHODOLOGY ARRANGEMENT\n";
+                textContent += "=" + "=".repeat(70) + "\n\n";
+                textContent += "Current arrangement of methodology concepts as positioned in the diagram.\n\n";
+
+                const quadrantOrder = ['procedural', 'conceptual', 'material', 'philosophical'];
+                
+                quadrantOrder.forEach(quadrant => {
+                    const quadrantNodes = quadrantGroups[quadrant];
+                    
+                    textContent += quadrantNames[quadrant] + "\n";
+                    textContent += "-".repeat(quadrantNames[quadrant].length) + "\n";
+                    
+                    if (quadrantNodes.length > 0) {
+                        textContent += `(${quadrantNodes.length} concepts arranged in this quadrant)\n\n`;
+                        
+                        quadrantNodes.forEach((node, index) => {
+                            const cleanText = node.label.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+                            textContent += `${index + 1}. ${cleanText}\n\n`;
+                        });
+                    } else {
+                        textContent += "(No concepts currently positioned in this quadrant)\n\n";
+                    }
+                    
+                    textContent += "\n";
+                });
+
+                const currentDate = new Date().toLocaleDateString();
+                const currentTime = new Date().toLocaleTimeString();
+                textContent += "\n" + "-".repeat(70) + "\n";
+                textContent += `Methodology arrangement exported on ${currentDate} at ${currentTime}\n`;
+
+                const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
+                const blob = new Blob([textContent], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `methodology_arrangement_${timestamp}.txt`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                // Visual feedback
+                const button = event.target;
+                if (button) {
+                    const originalText = button.textContent;
+                    button.textContent = 'Exported!';
+                    button.style.background = '#14aa8c';
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.style.background = '#0064b4';
+                    }, 2000);
+                }
+            } catch (error) {
+                console.error('Export error:', error);
+                alert('Export failed. Check console for details.');
+            }
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            generateNewSelection();
         });
 
-        // Drag functions (nodes lock in place when dropped)
-        function dragstarted(event, d) {
-            event.sourceEvent.stopPropagation();
-            if (!event.active) simulation.alphaTarget(0.3).restart();
-            d.fx = d.x;
-            d.fy = d.y;
-        }
-
-        function dragged(event, d) {
-            event.sourceEvent.stopPropagation();
-            d.fx = event.x;
-            d.fy = event.y;
-        }
-
-        function dragended(event, d) {
-            event.sourceEvent.stopPropagation();
-            if (!event.active) simulation.alphaTarget(0);
-            // Keep node locked in place - don't release fx/fy
-            // Visual feedback that node is now locked (green flash)
-            d3.select(event.sourceEvent.target).style("stroke", "#14aa8c")
-                .transition().duration(500).style("stroke", null);
-        }
-
-        // Additional protection against zoom
+        // Prevent zoom on document
         document.addEventListener('wheel', function(e) {
             if (e.target.closest('#network')) {
                 e.preventDefault();
             }
         }, { passive: false });
-        
-        // Global function to reset all nodes
-        window.resetAllNodes = function() {
-            data.nodes.forEach(d => {
-                d.fx = null;
-                d.fy = null;
-            });
-            simulation.alphaTarget(0.3).restart();
-            
-            // Visual feedback - flash all nodes
-            node.selectAll("circle").style("stroke", "#ff6b6b")
-                .transition().duration(1000).style("stroke", null);
-        };
-
-        // Add hover effects and double-click to unlock
-        node.on("mouseover", function(event, d) {
-            d3.select(this).select("circle").style("stroke-width", "3px");
-        })
-        .on("mouseout", function(event, d) {
-            d3.select(this).select("circle").style("stroke-width", null);
-        })
-        .on("dblclick", function(event, d) {
-            // Double-click to unlock a node and let it float freely again
-            event.stopPropagation();
-            d.fx = null;
-            d.fy = null;
-            simulation.alphaTarget(0.3).restart();
-            
-            // Visual feedback
-            const circle = d3.select(this).select("circle");
-            circle.style("stroke", "#ff6b6b").transition().duration(500).style("stroke", null);
-        });
     </script>
 </body>
 </html>
