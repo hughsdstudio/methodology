@@ -86,11 +86,6 @@
         #network {
             border: 1px solid #ddd;
             background: white;
-            cursor: grab;
-        }
-        
-        #network:active {
-            cursor: grabbing;
         }
         
         .node-bubble {
@@ -561,13 +556,6 @@
                 });
             });
 
-        // Add zoom behavior
-        svg.call(d3.zoom()
-            .scaleExtent([0.5, 3])
-            .on("zoom", (event) => {
-                svg.selectAll("g").attr("transform", event.transform);
-            }));
-
         // Update positions on simulation tick
         simulation.on("tick", () => {
             link.attr("d", d => {
@@ -598,7 +586,7 @@
             d.fy = null;
         }
 
-        // Add hover effects
+        // Add hover effects and interactions (no zoom)
         node.on("mouseover", function(event, d) {
             d3.select(this).select("circle").style("stroke-width", "3px");
         })
