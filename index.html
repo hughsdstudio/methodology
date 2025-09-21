@@ -562,12 +562,12 @@
             .attr("y", 30)
             .text("CAPTURE ←→ COMMONS");
 
-        // Create force simulation
+        // Create force simulation with tighter spacing
         const simulation = d3.forceSimulation(data.nodes)
-            .force("link", d3.forceLink(data.links).id(d => d.id).distance(120))
-            .force("charge", d3.forceManyBody().strength(-800))
+            .force("link", d3.forceLink(data.links).id(d => d.id).distance(80))  // Reduced from 120
+            .force("charge", d3.forceManyBody().strength(-400))  // Reduced from -800
             .force("center", d3.forceCenter(width / 2, height / 2))
-            .force("collision", d3.forceCollide().radius(40));
+            .force("collision", d3.forceCollide().radius(25));  // Reduced from 40
 
         // Add links to main group
         const link = mainGroup.append("g")
