@@ -86,6 +86,17 @@
         #network {
             border: 1px solid #ddd;
             background: white;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        /* Completely disable zoom */
+        .diagram-container {
+            overflow: hidden;
+            touch-action: pan-x pan-y;
         }
         
         .node-bubble {
@@ -436,10 +447,34 @@
             ]
         };
 
-        // Set up SVG
+        // Set up SVG with anti-zoom measures
         const svg = d3.select("#network");
         const width = +svg.attr("width");
         const height = +svg.attr("height");
+
+        // Completely prevent zoom behaviors
+        svg.on("wheel", function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+        
+        svg.on("dblclick", function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+        
+        // Prevent touch zoom on mobile
+        svg.on("touchstart", function(event) {
+            if (event.touches && event.touches.length > 1) {
+                event.preventDefault();
+            }
+        });
+        
+        svg.on("touchmove", function(event) {
+            if (event.touches && event.touches.length > 1) {
+                event.preventDefault();
+            }
+        });
 
         // Create arrow markers
         svg.append("defs").append("marker")
@@ -454,8 +489,11 @@
             .attr("d", "M0,-5L10,0L0,5")
             .attr("fill", "#141416");
 
-        // Add grid lines
-        const grid = svg.append("g").attr("class", "grid");
+        // Create main container group (never transformed)
+        const mainGroup = svg.append("g").attr("class", "main-container");
+
+        // Add grid lines to main group
+        const grid = mainGroup.append("g").attr("class", "grid");
         
         for (let x = 0; x <= width; x += 100) {
             grid.append("line")
@@ -471,24 +509,24 @@
                 .attr("x2", width).attr("y2", y);
         }
 
-        // Add axes
-        svg.append("line")
+        // Add axes to main group
+        mainGroup.append("line")
             .attr("class", "axis-line")
             .attr("x1", 50).attr("y1", height/2)
             .attr("x2", width-50).attr("y2", height/2);
             
-        svg.append("line")
+        mainGroup.append("line")
             .attr("class", "axis-line")
             .attr("x1", width/2).attr("y1", height-50)
             .attr("x2", width/2).attr("y2", 50);
 
-        svg.append("text")
+        mainGroup.append("text")
             .attr("class", "axis-label")
             .attr("x", width-30)
             .attr("y", height/2 - 10)
             .text("MATERIAL ←→ COMPUTATIONAL");
             
-        svg.append("text")
+        mainGroup.append("text")
             .attr("class", "axis-label")
             .attr("x", width/2)
             .attr("y", 30)
@@ -501,16 +539,16 @@
             .force("center", d3.forceCenter(width / 2, height / 2))
             .force("collision", d3.forceCollide().radius(40));
 
-        // Add links
-        const link = svg.append("g")
+        // Add links to main group
+        const link = mainGroup.append("g")
             .selectAll("path")
             .data(data.links)
             .enter().append("path")
             .attr("class", d => `link-${d.type}`)
             .attr("stroke-width", 2);
 
-        // Add nodes
-        const node = svg.append("g")
+        // Add nodes to main group
+        const node = mainGroup.append("g")
             .selectAll("g")
             .data(data.nodes)
             .enter().append("g")
@@ -556,8 +594,14 @@
                 });
             });
 
-        // Update positions on simulation tick
+        // Update positions on simulation tick (with bounds checking)
         simulation.on("tick", () => {
+            // Keep nodes within bounds
+            data.nodes.forEach(d => {
+                d.x = Math.max(30, Math.min(width - 30, d.x));
+                d.y = Math.max(30, Math.min(height - 30, d.y));
+            });
+            
             link.attr("d", d => {
                 const dx = d.target.x - d.source.x;
                 const dy = d.target.y - d.source.y;
@@ -568,23 +612,33 @@
             node.attr("transform", d => `translate(${d.x},${d.y})`);
         });
 
-        // Drag functions
+        // Drag functions (isolated to prevent zoom conflicts)
         function dragstarted(event, d) {
+            event.sourceEvent.stopPropagation();
             if (!event.active) simulation.alphaTarget(0.3).restart();
             d.fx = d.x;
             d.fy = d.y;
         }
 
         function dragged(event, d) {
+            event.sourceEvent.stopPropagation();
             d.fx = event.x;
             d.fy = event.y;
         }
 
         function dragended(event, d) {
+            event.sourceEvent.stopPropagation();
             if (!event.active) simulation.alphaTarget(0);
             d.fx = null;
             d.fy = null;
         }
+
+        // Additional protection against zoom
+        document.addEventListener('wheel', function(e) {
+            if (e.target.closest('#network')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
 
         // Add hover effects and interactions (no zoom)
         node.on("mouseover", function(event, d) {
